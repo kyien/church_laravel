@@ -1,0 +1,50 @@
+.sidebar .sidebar-background:after,
+.off-canvas-sidebar .sidebar-background:after {
+    background: #687397;
+}
+
+.sidebar .nav p,
+.sidebar .nav li>a,
+.sidebar,
+
+/* .nav li>a, */
+
+.off-canvas-sidebar .nav p .off-canvas-sidebar .nav li>a {
+    color: #FFFFFF;
+}
+
+.enzos {
+    background-color: #BF36CE
+}
+
+.card-custom {
+    display: inline-block;
+    position: relative;
+    width: auto;
+    margin: 25px 0;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 3px;
+    color: rgba(0, 0, 0, 0.87);
+    background: #fff;
+}
+
+.err {
+    color: #ff0000;
+}
+
+
+/* @media screen and (min-width:767px) {
+    .table-responsive {
+        width: 100%;
+        margin-bottom: 16.5px;
+        overflow-y: hidden;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border: 1px solid #ddd
+    }
+} */
+
+
+/* .sidebar .nav li>a,
+.off-canvas-sidebar .nav li>a {
+    color: #FFFFFF;
+} */
