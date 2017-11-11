@@ -44,7 +44,7 @@
                                                 <td>{{$user->phone}}</td>
                                                 <td>{{$user->email}}</td>
                                                 <td>{{$user->residence}}</td>
-                                                <td><button type="submit" id="edit-btn" class="btn btn-info" 
+                                                <td><button  class="btn btn-info" 
                                                 data-toggle="modal" 
                                                 data-target="#editModal"
                                                 data-email="{{$user->email}}"
@@ -58,7 +58,7 @@
                                                 >
                                                 EDIT &nbsp;<span class="fa fa-edit "></span> </button>
                                                 </td>
-                                                <td><button type="submit" id="delete_sys_user" class="btn btn-danger pull-right" value="{{$user->user_id}}">
+                                                <td><button  id="delete_sys_user" class="btn btn-danger pull-right" value="{{$user->user_id}}">
                                                 DELETE &nbsp;<span class="fa fa-trash "></span> </button>
                                                 </td>
                                                

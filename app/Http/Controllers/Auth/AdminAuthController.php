@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\SystemUser;
 use Auth;
+use JavaScript;
 
 class AdminAuthController extends Controller
 {
@@ -34,8 +35,10 @@ class AdminAuthController extends Controller
 
        
         return view('backend.users_add')->with('users',$this->users);
+
     }
-    protected function allusers_view(){
+    
+    protected function system_users_view(){
 
        $system_users= DB::table('system_users')
         ->join('users', function ($join) {
@@ -68,6 +71,13 @@ class AdminAuthController extends Controller
 
              ]);
 
+             JavaScript::put([
+                 'email' => $req->email,
+                'name' => $req->name,
+                'phone' => $req->phone,
+                'residence'=>$req->residence
+            ]);
+
              if($update){
 
                 return response()->json([
@@ -88,10 +98,10 @@ class AdminAuthController extends Controller
 
 
     }
-    protected function deleteSystemUser($id){
+    protected function deleteSystemUser($user_id){
 
     
-       $delete=SystemUser::findorfail('$id')->delete();
+       $delete=SystemUser::where('user_id',$user_id)->delete();
 
        if($delete){
 
@@ -101,11 +111,15 @@ class AdminAuthController extends Controller
         ]);
        }
 
+       else {
 
-       return response()->json([
-        'success' => false,
-        'message' => 'user delete failed!'
-    ]);
+        return response()->json([
+            'success' => false,
+            'message' => 'user delete failed!'
+        ]);
+
+       }
+     
 
 
 

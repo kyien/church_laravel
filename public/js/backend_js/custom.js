@@ -37,31 +37,39 @@ $(document).ready(function() {
     $('#edit_user_form').submit(function(e) {
 
         e.preventDefault();
-        $.LoadingOverlay("show");
+
+        $.showLoading({
+            name: 'circle-fade'
+        });
         var mydata = $(this).serialize();
         console.log(mydata);
 
         $.ajax({
-            type: 'PUT', // define the type of HTTP verb we want to use (POST for our form)
-            url: '/user_edit_view', // the url where we want to POST
+            type: "PUT", // define the type of HTTP verb we want to use (POST for our form)
+            url: '/admin/sys_user_edit', // the url where we want to POST
             data: mydata, // our data object
             dataType: 'json', // what type of data do we expect back from the server
             success: function(data) {
 
                 if (data.success) {
 
-                    $.loadingOverlay("hide", true);
+                    $.hideLoading();
 
                     toastr.success(data.message);
-                    // var user = '<tr id="task' + data.res.user_id+ '"><td>' + data.id + '</td><td>' + data.task + '</td><td>' + data.description + '</td><td>' + data.created_at + '</td>';
-                    // user += '<td><button class="btn btn-warning btn-xs btn-detail open-modal" value="' + data.id + '">Edit</button>';
-                    // user += '<button class="btn btn-danger btn-xs btn-delete delete-task" value="' + data.res.user_id + '">Delete</button></td></tr>';
+                    var user = '<tr id="user' + data.res.user_id + '"><td>' + name + '</td><td>' + data.res.username + '</td><td>' + data.res.role + '</td><td>' + phone + '</td>';
+                    user += '<td>' + email + '</td><td>' + residence + '</td>';
+                    user += '<td><button class="btn btn-info" data-toggle="modal" data-target="#editModal" data-email="{{$user->email}}"  data-userrole="{{$user->role}}" data-phone="{{$user->phone}}" data-username="{{$user->username}}" data-name="{{$user->name}}" data-residence="{{$user->residence}}" data-id="{{$user->user_id}}">EDIT &nbsp;<span class="fa fa-edit "></span></button></td>';
+                    user += '<button id ="delete_sys_user" class="btn btn-danger pull-right" value="' + data.res.user_id + '">DELETE &nbsp;<span class="fa fa-trash "></span> </button></button></td></tr>';
 
 
-                    location.reload(true);
+                    $("#user" + data.res.user_id).replaceWith(user);
+
+                    $('#edit_user_form').trigger("reset");
+
+                    $('#editModal').modal('hide');
 
                 } else {
-                    $.loadingOverlay("hide", true);
+                    $.hideLoading();
 
 
                     toastr.error(data.message);
@@ -98,17 +106,27 @@ $(document).ready(function() {
 
         var user_id = $(this).val();
 
+        console.log(user_id);
+
         $.ajax({
 
             type: "DELETE",
-            url: '/user_delete/' + user_id,
+            url: '/admin/sys_user_delete/' + user_id,
             success: function(data) {
                 console.log(data);
 
-                $("#user" + user_id).remove();
+                if (data.success) {
+                    toastr.success(data.message);
+
+                    $("#user" + user_id).remove();
+                } else {
+
+                    toastr.error(data.message);
+                }
+
             },
             error: function(data) {
-                console.log('Error:', data);
+                console.log('Error:', data.responseText);
             }
         });
 

@@ -32,35 +32,36 @@
                                         <span class="sidebar-normal">Backend Users</span>
                                     </a>
                                 </li>
+                                
                                 <li>
-                                    <a href="#">
+                                    <a href="{{route('admin.add.userview')}}">
+                                        <span class="sidebar-normal">Assign role</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('user.index')}}">
                                         <span class="sidebar-normal">All Users</span>
                                     </a>
                                 </li>
                                 
-                                <li>
-                                    <a href="{{route('admin.add.userview')}}">
-                                        <span class="sidebar-normal">Add User</span>
-                                    </a>
-                                </li>
                                 
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <a href="./user.html">
+                        <a href="{{route('transaction.view')}}">
                             <i class="material-icons">shopping_basket</i>
                             <p>Income Basket</p>
                         </a>
                     </li>
                     <li>
-                        <a href="./table.html">
+                        <a href="{{route('expense.view')}}">
                             <i class="material-icons">content_paste</i>
                             <p>Vote Heads</p>
                         </a>
                     </li>
                     <li>
-                        <a href="./typography.html">
+                        <a href="{{route('payment.view')}}">
                             <i class="material-icons">attach_money</i>
                             <p>Consolidated Wages</p>
                         </a>
@@ -68,7 +69,7 @@
                   
                    
                     <li>
-                        <a href="./typography.html">
+                        <a href="#">
                             <i class="material-icons">insert_chart</i>
                             <p>Reports</p>
                         </a>

@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class SystemUser extends Authenticatable
 {
+
+
     use Notifiable;
 
     /**
@@ -24,6 +26,22 @@ class SystemUser extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
     ];
+
+    public function getRememberToken()
+    {
+        return '';
+    }
+
+    public function setRememberToken($value)
+    {
+    }
+
+    public function getRememberTokenName()
+    {
+        // just anything that's not actually on the model
+        return '';
+    }
+
 }

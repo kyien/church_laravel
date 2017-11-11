@@ -14,7 +14,7 @@ class AdminController extends Controller
 
     public function __construct(){
 
-        $this->middleware('guest:admins');
+        $this->middleware('guest:admins', ['except' => ['logout']]);
     }
 
     protected function showLoginForm() {
@@ -39,7 +39,7 @@ class AdminController extends Controller
 
         //attempt login
 
-        if(Auth::guard('admins')->attempt($credentials)){
+        if(Auth::guard('admins')->attempt($credentials,false)){
             //if successful 
             // echo "rached here";
             return redirect()->intended(route('admin.dash'));
@@ -48,6 +48,18 @@ class AdminController extends Controller
         
         //if unsuccesful
         return redirect()->back()->withInput($request->only('username','remember'));
+
+        
+    }
+
+    protected function logout(Request $request){
+
+        Auth::guard('admins')->logout();
+
+        $request->session()->invalidate();
+        
+
+        return redirect('/');
 
         
     }

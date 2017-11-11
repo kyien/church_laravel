@@ -21,6 +21,7 @@
     <link href="{{ asset('css/backend_css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('fonts/fonts.googleapis.css') }}" rel="stylesheet" type='text/css'>
     <link href="{{ asset('css/backend_css/toastr.min.css') }}" rel="stylesheet" type='text/css'>
+    <link href="{{ asset('css/loading.min.css') }}" rel="stylesheet" type='text/css'>
    
    
 </head>
@@ -58,12 +59,13 @@
 <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 
-    <script type="{{asset('js/loadingoverlay.min.js')}}"></script>
-    <script type="{{asset('js/loadingoverlay_progress.min.js')}}"></script>
+   
     <script src="{{asset('js/backend_js/material.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('js/backend_js/toastr.min.js')}}" type="text/javascript"></script>
 
+    <script src="{{asset('js/jquery.loading.min.js')}}" type="text/javascript"></script>
     <script type="text/javascript"  src="{{ asset('js/backend_js/custom.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('js/all_users.js') }}"></script>
 
 <!--  Charts Plugin -->
 <script src="{{asset('js/backend_js/chartist.min.js')}}" type="text/javascript"></script>

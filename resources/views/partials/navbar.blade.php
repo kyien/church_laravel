@@ -48,7 +48,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                             <li >
-                            <a href="{{url('/logout')}}"> <i class="material-icons">forward</i>Logout</a>
+                            <a href="{{route('admin.logout')}}"> <i class="material-icons">forward</i>Logout</a>
                             </li>
                         
                         </ul>
